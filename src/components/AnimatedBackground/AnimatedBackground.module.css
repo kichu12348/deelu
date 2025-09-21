@@ -9,7 +9,7 @@
   background-color: var(--color-background);
 }
 
-.particles {
+.particlesContainer {
   position: absolute;
   top: 0;
   left: 0;
@@ -19,49 +19,103 @@
 
 .particle {
   position: absolute;
-  border-radius: 50%;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.bubble {
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 10px rgba(255, 158, 125, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(1px);
-}
-
-.icon {
   color: var(--color-primary);
-  opacity: 0.4;
+  opacity: 0; 
+  will-change: transform, opacity; 
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
   filter: drop-shadow(0 0 5px var(--color-highlight));
 }
 
-.shapeContainer {
-  position: absolute;
-  opacity: 0.4;
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-15vh) rotate(90deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-30vh) rotate(180deg);
+    opacity: 0;
+  }
 }
 
-.shape {
-  fill: var(--color-primary);
-  opacity: 0.3;
+@keyframes sway {
+  0% {
+    transform: translateX(0) rotate(0deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateX(4vw) rotate(15deg);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateX(0) rotate(0deg);
+    opacity: 0.7;
+  }
 }
 
+@keyframes pulseAndFloat {
+  0% {
+    transform: scale(1) translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2) translateY(-10vh);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1) translateY(-20vh);
+    opacity: 0;
+  }
+}
+
+/* --- Animation Classes to apply the keyframes --- */
+
+.float {
+  animation-name: float;
+}
+
+.sway {
+  animation-name: sway;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+}
+
+.pulseAndFloat {
+  animation-name: pulseAndFloat;
+}
+
+/* --- Gradient Overlay (Unchanged) --- */
 .gradientOverlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at center, transparent 0%, var(--color-background) 70%);
+  background: radial-gradient(
+    circle at center,
+    transparent 0%,
+    var(--color-background) 70%
+  );
   animation: pulseGlow 6s infinite alternate;
 }
 
 @keyframes pulseGlow {
-  0% {
-    background: radial-gradient(circle at center, transparent 0%, var(--color-background) 70%);
+  from {
+    background: radial-gradient(
+      circle at center,
+      transparent 0%,
+      var(--color-background) 70%
+    );
   }
-  100% {
-    background: radial-gradient(circle at center, rgba(255, 158, 125, 0.15) 0%, var(--color-background) 75%);
+  to {
+    background: radial-gradient(
+      circle at center,
+      rgba(255, 158, 125, 0.15) 0%,
+      var(--color-background) 75%
+    );
   }
 }
