@@ -1,0 +1,243 @@
+.container {
+  width: 100%;
+  height: 1700px; /* Increased from 1100px */
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.title {
+  text-align: center;
+  color: var(--color-accent);
+  font-family: var(--font-primary);
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  font-weight: bold;
+}
+
+.svgContainer {
+  width: 100%;
+  height: 1500px; /* Increased from 900px */
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.curvyPath {
+  position: absolute;
+  height: 100%;
+  width: 100px;
+  z-index: 1;
+}
+
+/* Polaroid styling */
+.polaroidContainer {
+  position: absolute;
+  z-index: 2;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, z-index 0.01s;
+  will-change: transform, opacity, z-index;
+  perspective: 1000px;
+}
+
+.polaroidContainer:hover {
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+.left {
+  left: calc(50% - 250px);
+  transform: translateX(-50%);
+}
+
+.right {
+  left: calc(50% + 250px);
+  transform: translateX(-50%);
+}
+
+.polaroid {
+  background-color: white;
+  padding: 15px 15px 35px 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: rotate(-2deg);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.polaroid::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0) 50%);
+  pointer-events: none;
+  z-index: 1;
+  border-radius: 2px;
+}
+
+.right .polaroid {
+  transform: rotate(2deg);
+}
+
+.polaroid:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.imageContainer {
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+  margin-bottom: 8px;
+  background-color: #f0f0f0; /* Placeholder background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fallbackImage {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  font-family: var(--font-secondary);
+  font-size: 1rem;
+  text-align: center;
+  padding: 10px;
+}
+
+.polaroidCaption {
+  font-family: var(--font-secondary);
+  font-size: 0.9rem;
+  color: #333;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Sticky note styling */
+.stickyNote {
+  width: 180px;
+  min-height: 60px;
+  background-color: var(--color-secondary);
+  padding: 12px;
+  margin-top: -15px;
+  margin-left: 25px;
+  transform: rotate(3deg);
+  box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.1);
+  font-family: var(--font-secondary);
+  font-size: 0.85rem;
+  color: #333;
+  font-weight: 500;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 1;
+  border-radius: 1px;
+  will-change: transform, opacity;
+  background-image: 
+    linear-gradient(0deg, rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 15px 15px;
+}
+
+.right .stickyNote {
+  transform: rotate(-2deg);
+  margin-left: -25px;
+}
+
+.stickyNote::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.1) 5px,
+    transparent 5px,
+    transparent 10px
+  );
+  z-index: -1;
+}
+
+.stickyNote p {
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1100px) {
+  .left {
+    left: calc(50% - 180px);
+  }
+  
+  .right {
+    left: calc(50% + 180px);
+  }
+  
+  .polaroidContainer {
+    width: 160px;
+  }
+  
+  .imageContainer {
+    height: 120px;
+  }
+  
+  .stickyNote {
+    width: 150px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .left {
+    left: calc(50% - 130px);
+  }
+  
+  .right {
+    left: calc(50% + 130px);
+  }
+  
+  .polaroidContainer {
+    width: 120px;
+  }
+  
+  .polaroid {
+    padding: 10px 10px 25px 10px;
+  }
+  
+  .imageContainer {
+    height: 90px;
+  }
+  
+  .stickyNote {
+    width: 110px;
+    min-height: 50px;
+    font-size: 0.7rem;
+    padding: 8px;
+  }
+}

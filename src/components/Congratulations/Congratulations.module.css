@@ -1,0 +1,145 @@
+.container {
+  width: 100%;
+  padding: 4rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 80vh;
+  margin-top: 1rem;
+}
+
+.confettiContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.confetti {
+  position: absolute;
+  top: 0;
+  will-change: transform;
+  border-radius: 2px;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: 0 8px 32px rgba(255, 123, 84, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.title {
+  font-family: var(--font-primary);
+  font-size: 3rem;
+  color: var(--color-accent);
+  margin-bottom: 2rem;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ageContainer {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 120px;
+  background-color: var(--color-accent);
+  color: white;
+  font-family: var(--font-primary);
+  font-size: 4rem;
+  border-radius: 10px;
+  box-shadow: 0 6px 0 var(--color-shadow), 0 8px 15px rgba(0, 0, 0, 0.15);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.number::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  border-radius: 10px 10px 0 0;
+}
+
+.message {
+  font-family: var(--font-secondary);
+  font-size: 1.2rem;
+  color: var(--color-text);
+  text-align: center;
+  max-width: 600px;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.highlight {
+  color: var(--color-accent);
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+.emoji {
+  font-size: 2.5rem;
+  letter-spacing: 0.5rem;
+  margin-top: 1rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Add some responsive styling */
+@media (max-width: 768px) {
+  .content {
+    padding: 2rem 1.5rem;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+  }
+  
+  .number {
+    width: 60px;
+    height: 100px;
+    font-size: 3.5rem;
+  }
+  
+  .message {
+    font-size: 1rem;
+  }
+  
+  .emoji {
+    font-size: 2rem;
+  }
+}

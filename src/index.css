@@ -1,0 +1,68 @@
+
+:root {
+  /* Warm fuzzy color palette */
+  --color-primary: #ff9e7d; /* Warm coral */
+  --color-secondary: #ffc177; /* Soft amber */
+  --color-accent: #ff7b54; /* Sunset orange */
+  --color-background: #fff1e6; /* Cream */
+  --color-text: #5e4c5a; /* Warm purple-gray */
+  --color-highlight: #ffb085; /* Peach highlight */
+  --color-shadow: #e29d71; /* Caramel shadow */
+  --color-neutral: #f9e4d4; /* Soft beige */
+  --color-success: #8bdb81; /* Soft green */
+  --color-progress-bg: #ffe0d0; /* Light peach for progress bar background */
+  
+  /* Font family */
+  --font-primary: 'Chewy', cursive;
+  --font-secondary: 'Nunito', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-secondary);
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+
+body::-webkit-scrollbar {
+  width: 6px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary);
+}
+
+button {
+  cursor: pointer;
+  background-color: var(--color-accent);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--color-primary);
+}
+
+@media screen and (max-width: 768px) {
+  *{
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  *::-webkit-scrollbar {
+    display: none;
+  }
+}
